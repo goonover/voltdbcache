@@ -63,6 +63,8 @@ public class AspectUtils {
      * @return
      */
     public static Object[] resolveParams(String paramStr,Map mapper){
+        if(paramStr.equalsIgnoreCase("none"))
+            return new Object[0];
         LinkedList paramsList = new LinkedList();
         String[] params = paramStr.split(",");
         for(int i=0;i<params.length;i++){
@@ -75,6 +77,9 @@ public class AspectUtils {
             }else {
                 //参数或者返回值
                 Object paramVal = mapper.get(params[i]);
+                //空值跳过，否则会出现NullPointerException
+                if(paramVal==null)
+                    continue;
                 if(paramVal.getClass().isArray()){
                     if(paramVal instanceof Object[]){
                         //对于普通的Object数组，直接向列表添加即可

@@ -1,5 +1,7 @@
 <aspectj>
     <aspects>
         <aspect name="cache.aop.voltCacheAspect"></aspect>
+        <aspect name="cache.aop.VoltGetAspect"></aspect>
+        <aspect name="cache.aop.voltSysProcAspect"></aspect>
     </aspects>
 </aspectj>
